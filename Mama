@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Ultra Pesada</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            animation: move 5s infinite;
+            box-shadow: 0 0 20px 10px #ff0000;
+            transform: rotate(45deg);
+            border-radius: 50%;
+        }
+        @keyframes move {
+            0% { transform: translateX(0) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Genera muchos elementos para hacer la página pesada -->
+        <script>
+            for (let i = 0; i < 10000; i++) {
+                const element = document.createElement('div');
+                element.classList.add('element');
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.transform = `rotate(${Math.random() * 360}deg)`;
+                element.style.boxShadow = `0 0 20px 10px rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)`;
+                element.style.backgroundColor = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)`;
+                element.style.borderRadius = `${Math.random() * 50}%`;
+                document.querySelector('.container').appendChild(element);
+            }
+        </script>
+    </div>
+</body>
+</html>
